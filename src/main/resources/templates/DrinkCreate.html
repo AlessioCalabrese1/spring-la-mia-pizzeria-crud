@@ -6,6 +6,21 @@
 </head>
 <body>
 	<h1>Drink CREATE</h1>
+	
+	<div
+		th:if="${errors}"
+	>
+		ERROR:<br>
+		<ul>
+			<li
+				th:each="error : ${errors}"
+				th:object="${error}"
+			>
+				[[*{defaultMessage}]]
+			</li>
+		</ul>
+	</div>
+	
 	<form 
 		method="POST" 
 		action="/drink/store"
