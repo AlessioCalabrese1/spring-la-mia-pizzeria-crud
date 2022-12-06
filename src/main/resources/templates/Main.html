@@ -17,6 +17,8 @@
 			[[*{id}]] - <a th:href="@{/update/{id}  (id=*{id}) }">[[*{name}]]</a> <br>
 			[[*{description}]] <br>
 			[[*{price}]]
+			
+			<a class="btn btn-danger" th:href="@{/delete/{id}  (id=*{id}) }">Delete</a>
 		</li>
 	</ul>
 	

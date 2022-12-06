@@ -56,4 +56,12 @@ public class PizzeriaController {
 		
 		return "Update";
 	}
+	
+	@GetMapping("delete/{id}")
+	public String delete(@PathVariable("id") int id) {
+		Optional<Pizza> pizza = pizzaServ.findPizzaById(id);
+		pizzaServ.deleteById(id);
+		
+		return "redirect:/";
+	}
 }

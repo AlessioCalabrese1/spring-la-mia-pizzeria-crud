@@ -25,4 +25,9 @@ public class PizzaServ {
 		
 		return pizzaRepo.findById(id);
 	}
+	
+	public void deleteById(int id) {
+		
+		pizzaRepo.deleteById(id);
+	}
 }
