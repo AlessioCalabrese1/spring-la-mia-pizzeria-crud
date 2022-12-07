@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import jakarta.validation.Valid;
 
@@ -62,4 +63,29 @@ public class PizzeriaController {
 		
 		return "redirect:/";
 	}
+	
+	@GetMapping("search")
+	public String getSearchPizzaByName(Model model, 
+			@RequestParam(name = "query", required = false) String query) {
+		
+//		List<Pizza> pizzas = null;
+//		if (query == null) {
+//			
+//			pizzas = pizzaServ.all();
+//			
+//		} else {
+//			
+//			pizzas = pizzaServ.findByName(query);
+//		}
+		List<Pizza> pizzas = query == null 
+							? pizzaServ.all()
+							: pizzaServ.findByName(query); 
+		
+		model.addAttribute("pizzas", pizzas);
+		model.addAttribute("size", pizzas.size());
+		model.addAttribute("query", query);
+		
+		return "Main";
+	}
+
 }

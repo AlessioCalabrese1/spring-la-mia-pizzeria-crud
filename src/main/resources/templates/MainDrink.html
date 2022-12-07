@@ -11,6 +11,12 @@
 <body>
 	<h1>These are our drinks:</h1>
 	<h2 th:if="${size} == 0">There are no drinks</h2>
+	<form method="GET" action="/drink/search">
+		<label>Name: </label>
+		<input type="text" name="query" th:value="${query}">
+		<br><br>
+		<input type="submit" value="SEARCH">
+	</form>
 	<ul th:if="${size} > 0">
 		<li th:each="drink : ${drinks}"
 		th:object="${drink}">
