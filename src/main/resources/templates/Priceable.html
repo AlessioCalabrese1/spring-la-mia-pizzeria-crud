@@ -9,17 +9,10 @@
 <title>Pizzeria</title>
 </head>
 <body>
-	<h1>These are our pizzas:</h1>
-	<h2 th:if="${size} == 0">There are no pizzas</h2>
-	<form method="GET" action="/search">
-		<label>Name: </label>
-		<input type="text" name="query" th:value="${query}">
-		<br><br>
-		<input type="submit" value="SEARCH">
-	</form>
-	<ul th:if="${size} > 0">
-		<li th:each="pizza : ${pizzas}"
-		th:object="${pizza}">
+	<h1>These are our pizzas and drink sorted by price:</h1>
+	<ul>
+		<li th:each="product : ${priceableElements}"
+		th:object="${product}">
 			[[*{id}]] - <a th:href="@{/update/{id}  (id=*{id}) }">[[*{name}]]</a> <br>
 			[[*{description}]] <br>
 			[[*{price}]]
@@ -28,8 +21,8 @@
 		</li>
 	</ul>
 	
-	<a th:href="@{/create}" class="btn btn-primary">Add new pizza</a>
+	
+	<a th:href="@{/pizza}" class="btn btn-primary">Go to pizzas</a>
 	<a th:href="@{/drink}" class="btn btn-primary">Go to drinks</a>
-	<a th:href="@{/priceable}" class="btn btn-primary">Go to priceable elements</a>
 </body>
 </html>
